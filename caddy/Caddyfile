@@ -1,27 +1,46 @@
 # Listen on all interfaces, default Caddy port
-:2015 {
+{
+    debug
+    acme_ca https://acme-v02.api.letsencrypt.org/directory
+}
+caddy.test.kryptocoder.com {
 
-	# This is the pattern that will be used to detect
-	# WebSockets
-	@websockets {
-    header Connection *Upgrade*
-		header Upgrade websocket
-  }
+        # This is the pattern that will be used to detect
+        # WebSockets
+        @websockets {
+                header Connection *Upgrade*
+                header Upgrade websocket
+        }
 
-	# Handle any traffic that matches the `@websockets` pattern
-	handle @websockets {
-		reverse_proxy http://mediator:3001
-	}
+        # Handle any traffic that matches the `@websockets` pattern
+        handle @websockets {
+                reverse_proxy http://mediator:3001
+        }
 
-	# Handle all other traffic.
-	handle {
-		reverse_proxy http://mediator:3000
-	}
+        # Handle all other traffic.
+        handle {
 
-	# What logs should look like.
-	log {
-			output stdout 
-			# format single_field common_log
-			level ERROR
-	}
+                reverse_proxy http://mediator:3000
+        }
+
+        # What logs should look like.
+        log {
+                        output stdout
+                        # format single_field common_log
+                        level ERROR
+        }
+}
+
+issuer.kmindzwallet.com {
+    reverse_proxy http://10.0.0.4:9021
+}
+
+verifier.kmindzwallet.com {
+    reverse_proxy http://10.0.0.4:9041
+}
+api.issuer.kmindzwallet.com {
+    reverse_proxy http://10.0.0.4:8021
+}
+api.verifier.kmindzwallet.com {
+    reverse_proxy http://10.0.0.4:8041
 }
