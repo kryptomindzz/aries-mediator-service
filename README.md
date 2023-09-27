@@ -6,6 +6,7 @@ First create an A/AAAA record for all the domains used in CaddyFile
 #NGROK Important Notes
 
 Since we are using public ip and all the required ports are exposed, we do not need ngrok.
+We have to provide public url in .env file to "MEDIATOR_URL" VAriable.
 
 # Aries Mediator Service
 
