@@ -31,6 +31,8 @@ caddy.test.kryptocoder.com {
         }
 }
 
+#10.0.0.4 is private ip address of server
+#command: hostname -i
 issuer.kmindzwallet.com {
     reverse_proxy http://10.0.0.4:9021
 }
@@ -43,4 +45,11 @@ api.issuer.kmindzwallet.com {
 }
 api.verifier.kmindzwallet.com {
     reverse_proxy http://10.0.0.4:8041
+}
+#serve static files
+home.kmindzwallet.com {
+        root * /var/www/html
+        file_server {
+                hide .git
+        }
 }

@@ -25,6 +25,7 @@ services:
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:z
       - caddy_data:/data
+      - ${ARIES_HOME}:/var/www/html
     healthcheck:
       # Port 2019 is an internal Caddy admin port.
       test: nc -zv localhost:2019 || exit -1
