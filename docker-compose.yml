@@ -98,7 +98,7 @@ services:
       - POSTGRESQL_HOST=${POSTGRESQL_HOST:-db}
       - POSTGRESQL_PORT=${POSTGRESQL_PORT:-5432}
       - ACAPY_WALLET_STORAGE_CONFIG={"url":"${POSTGRESQL_HOST:-db}:${POSTGRESQL_PORT:-5432}","wallet_scheme":"DatabasePerWallet"}
-      - ACAPY_WALLET_STORAGE_CREDS={"account":"${POSTGRESQL_USER:-postgres}","password":"${POSTGRESQL_PASSWORD:-development}","admin_account":"${POSTGRESQL_ADMIN_USER:>
+      - ACAPY_WALLET_STORAGE_CREDS={"account":"${POSTGRESQL_USER:-postgres}","password":"${POSTGRESQL_PASSWORD:-development}","admin_account":"${POSTGRESQL_ADMIN_USER:-postgres}","admin_password":"${POSTGRESQL_ADMIN_PASSWORD:-development}"}
       - ACAPY_WALLET_NAME=${MEDIATOR_WALLET_NAME:-mediator}
       - ACAPY_WALLET_KEY=${MEDIATOR_WALLET_KEY:-testing}
       - MEDIATOR_AGENT_HTTP_IN_PORT=${MEDIATOR_AGENT_HTTP_IN_PORT:-3000}
