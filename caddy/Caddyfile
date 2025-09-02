@@ -3,7 +3,7 @@
     debug
     acme_ca https://acme-v02.api.letsencrypt.org/directory
 }
-caddy.test.kryptocoder.com {
+caddy.agenticmindz.com {
 
         # This is the pattern that will be used to detect
         # WebSockets
@@ -31,23 +31,23 @@ caddy.test.kryptocoder.com {
         }
 }
 
-#10.0.0.4 is private ip address of server
+#IP address dynamically set via INTERNAL_IP environment variable
 #command: hostname -i
-issuer.kmindzwallet.com {
-    reverse_proxy http://10.0.0.4:9021
+issuer.agenticmindz.com {
+    reverse_proxy http://{$INTERNAL_IP}:9021
 }
 
-verifier.kmindzwallet.com {
-    reverse_proxy http://10.0.0.4:9041
+verifier.agenticmindz.com {
+    reverse_proxy http://{$INTERNAL_IP}:9041
 }
-api.issuer.kmindzwallet.com {
-    reverse_proxy http://10.0.0.4:8021
+api.issuer.agenticmindz.com {
+    reverse_proxy http://{$INTERNAL_IP}:8021
 }
-api.verifier.kmindzwallet.com {
-    reverse_proxy http://10.0.0.4:8041
+api.verifier.agenticmindz.com {
+    reverse_proxy http://{$INTERNAL_IP}:8041
 }
 #serve static files
-home.kmindzwallet.com {
+home.agenticmindz.com {
         root * /var/www/html
         file_server {
                 hide .git

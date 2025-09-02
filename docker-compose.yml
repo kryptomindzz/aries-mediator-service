@@ -1,4 +1,4 @@
-version: "3"
+
 
 networks:
   mediator-network:
@@ -17,6 +17,8 @@ services:
     hostname: caddy
     networks:
       - mediator-network
+    environment:
+      - INTERNAL_IP=${INTERNAL_IP:-172.17.0.1}
     ports: # Uncomment to access caddy outside of containers
       # - 2015:2015
       - 80:80
@@ -58,8 +60,8 @@ services:
   mediator-controller:
     image: node:fermium
     restart: unless-stopped
-    profiles:
-      - donotstart
+  # profiles:
+  #   - donotstart
     environment:
       - PORT=${MEDIATOR_CONTROLLER_PORT:-3010}
       - CONTROLLER_ADMIN_API_KEY=${MEDIATOR_CONTROLLER_ADMIN_API_KEY}
