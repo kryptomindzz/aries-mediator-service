@@ -114,6 +114,8 @@ services:
       - MEDIATOR_CONTROLLER_WEBHOOK=${MEDIATOR_CONTROLLER_WEBHOOK:-http://mediator-controller:3010/webhooks}
       - MEDIATOR_AGENT_ADMIN_API_KEY=${MEDIATOR_AGENT_ADMIN_API_KEY}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      # WebSocket configuration
+      - AIOHTTP_WEBSOCKET_HEARTBEAT=30
     ports: # Uncomment to access mediator outside of containers
       - ${MEDIATOR_AGENT_HTTP_ADMIN_PORT:-3002}:${MEDIATOR_AGENT_HTTP_ADMIN_PORT:-3002}
       - ${MEDIATOR_AGENT_HTTP_IN_PORT:-3000}:${MEDIATOR_AGENT_HTTP_IN_PORT:-3000}
