@@ -3,7 +3,7 @@
     debug
     acme_ca https://acme-v02.api.letsencrypt.org/directory
 }
-caddy.agenticmindz.com {
+caddy.ziraai.app {
 
         # This is the pattern that will be used to detect
         # WebSockets
@@ -43,21 +43,21 @@ caddy.agenticmindz.com {
 
 #IP address dynamically set via INTERNAL_IP environment variable
 #command: hostname -i
-issuer.agenticmindz.com {
+issuer.ziraai.app {
     reverse_proxy http://{$INTERNAL_IP}:9021
 }
 
-verifier.agenticmindz.com {
+verifier.ziraai.app {
     reverse_proxy http://{$INTERNAL_IP}:9041
 }
-api.issuer.agenticmindz.com {
+api.issuer.ziraai.app {
     reverse_proxy http://{$INTERNAL_IP}:8021
 }
-api.verifier.agenticmindz.com {
+api.verifier.ziraai.app {
     reverse_proxy http://{$INTERNAL_IP}:8041
 }
 #serve static files
-home.agenticmindz.com {
+home.ziraai.app {
         root * /var/www/html
         file_server {
                 hide .git
