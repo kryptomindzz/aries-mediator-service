@@ -56,6 +56,10 @@ api.issuer.ziraai.app {
 api.verifier.ziraai.app {
     reverse_proxy http://{$INTERNAL_IP}:8041
 }
+
+explorer.ziraai.app {
+    reverse_proxy http://{$INTERNAL_IP}:9000
+}
 #serve static files
 home.ziraai.app {
         root * /var/www/html
