@@ -67,3 +67,12 @@ home.ziraai.app {
                 hide .git
         }
 }
+
+# Redirect root domain and www to home
+ziraai.app {
+    redir https://home.ziraai.app{uri}
+}
+
+www.ziraai.app {
+    redir https://home.ziraai.app{uri}
+}
